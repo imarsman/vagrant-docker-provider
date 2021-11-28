@@ -3,8 +3,8 @@
 This project was forked from another which included a multi-architecture build
 and storage of the built container in a remote repository. At the moment I am
 just wishing to be able to have an amd64 base Docker container that can be used
-to run Vagrant. There is a fair bit of the forked project's logic, which I will
-clean up over time.
+to run Vagrant on a Mac M1. There is a fair bit of the forked project's logic,
+which I will clean up over time.
 
 This repo will build a docker image that can be used as a provider for [Vagrant](https://www.vagrantup.com) as a Linux development environment.
 
