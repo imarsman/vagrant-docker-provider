@@ -9,7 +9,7 @@ tasks:
   ssh:
     desc: ssh to vagrant
     cmds:
-      - task: run
+      #      - task: run
       - vagrant ssh
   run:
     desc: Run vagrant
@@ -22,12 +22,16 @@ tasks:
     desc: Halt vagrant
     cmds:
       - vagrant halt
-  build:
-    desc: Build docker container
+  up:
+    desc: vagrant up
     cmds:
-      - cmd: docker rmi -f vagrant-provider:latest
-        ignore_error: true
-      - docker build --no-cache -t vagrant-provider:latest --platform linux/amd64 .
+      - vagrant up --provider=docker
+  # build:
+  #   desc: Build docker container
+  #   cmds:
+  #     - cmd: docker rmi -f vagrant-provider:latest
+  #       ignore_error: true
+  #     - docker build --no-cache -t vagrant-provider:latest --platform linux/amd64 .
   default:
     cmds:
       - echo "Build, run, or ssh to vagrant"
