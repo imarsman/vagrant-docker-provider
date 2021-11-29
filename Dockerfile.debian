@@ -14,7 +14,8 @@ RUN apt-get update && \
         man-db \
         curl \
         wget \
-        vim-tiny && \
+        vim-tiny \
+        jove && \
     apt-get -qq clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 

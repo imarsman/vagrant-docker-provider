@@ -2,36 +2,21 @@
 version: "3"
 
 tasks:
-  docker-prune:
-    desc: Prune docker containers
-    cmds:
-      - docker container prune
   ssh:
     desc: ssh to vagrant
     cmds:
-      #      - task: run
+      - task: run
       - vagrant ssh
   run:
     desc: Run vagrant
     cmds:
-      - cmd: docker rm vagrant-provider
-        ignore_error: true
       - cmd: vagrant up --provider=docker
         ignore_error: true
+  up:
+    desc: Start vagrant
+    cmds:
+      - vagrant up --provider=docker
   halt:
     desc: Halt vagrant
     cmds:
       - vagrant halt
-  up:
-    desc: vagrant up
-    cmds:
-      - vagrant up --provider=docker
-  # build:
-  #   desc: Build docker container
-  #   cmds:
-  #     - cmd: docker rmi -f vagrant-provider:latest
-  #       ignore_error: true
-  #     - docker build --no-cache -t vagrant-provider:latest --platform linux/amd64 .
-  default:
-    cmds:
-      - echo "Build, run, or ssh to vagrant"
