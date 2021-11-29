@@ -16,7 +16,19 @@ tasks:
     desc: Start vagrant
     cmds:
       - vagrant up --provider=docker
+#  suspend:
+#    desc: Suspend vagrant
+#    cmds:
+#      - vagrant suspend
+#  resume:
+#    desc: Resume vagrant
+#    cmds:
+#      - vagrant resume
   halt:
     desc: Halt vagrant
     cmds:
       - vagrant halt
+  destroy:
+    desc: Halt vagrant machine
+    cmds:
+      - vagrant destroy

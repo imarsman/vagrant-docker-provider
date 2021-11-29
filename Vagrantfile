@@ -17,7 +17,7 @@ Vagrant.configure(2) do |config|
     docker.volumes = ["/sys/fs/cgroup:/sys/fs/cgroup:ro"]
     # Vagrant makes a mount from current dir to /vagrant
     # Force amd64 - vagrant will figure it out with Mac M1
-#    docker.create_args = ["--platform=linux/amd64"]
+    # docker.create_args = ["--platform=linux/amd64"]
   end
 
 end
