@@ -13,9 +13,11 @@ Vagrant.configure(2) do |config|
     docker.remains_running = true
     docker.has_ssh = true
     docker.privileged = true
+    # This seems to be required but I haven't figured out why
     docker.volumes = ["/sys/fs/cgroup:/sys/fs/cgroup:ro"]
-    # Force amd64
-    docker.create_args = ["--platform=linux/amd64"]
+    # Vagrant makes a mount from current dir to /vagrant
+    # Force amd64 - vagrant will figure it out with Mac M1
+#    docker.create_args = ["--platform=linux/amd64"]
   end
 
 end
