@@ -1,0 +1,7 @@
+---
+- name: host-01
+  build_dir: .
+  ports: ["2200:22"]
+- name: host-02
+  build_dir: .
+  ports: ["2222:22"]
