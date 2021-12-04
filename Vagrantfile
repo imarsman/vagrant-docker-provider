@@ -19,11 +19,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   containers.each do |container|
     config.vm.define container["name"] do |cntnr|
-#       config.vm.provision "shell", privileged: false, inline: <<-EOF
-#   echo "ansible"
-# EOF
-      # config.vm.network "forwarded_port", guest: 80, host: 8080
-
       cntnr.vm.synced_folder ".", "/vagrant", disabled: true
       # Configure the Docker provider for Vagrant
       cntnr.vm.provider "docker" do |d|
@@ -45,18 +40,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         d.build_dir = container["build_dir"]
         d.dockerfile = "Dockerfile"
     
-        d.has_ssh = true
-    
-    
+        d.has_ssh = true   
         d.volumes = ["/sys/fs/cgroup:/sys/fs/cgroup:ro"]
-
-      # cntnr.vm.provision :ansible_local do |ansible|
-#       config.vm.provision "shell", privileged: false, inline: <<-EOF
-#   echo "ansible"
-# EOF
-    # end
       end
-
     end
   end
 end
