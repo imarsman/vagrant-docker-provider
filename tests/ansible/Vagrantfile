@@ -17,8 +17,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.hostname = "vagrant-docker"
   config.vm.allow_hosts_modification = true
 
-  containers.each do |container|
-    config.vm.define container["name"] do |cntnr|
+  config.vm.define :server do |cntnr|
       cntnr.vm.synced_folder ".", "/vagrant", disabled: true
       # Configure the Docker provider for Vagrant
       cntnr.vm.provider "docker" do |d|
@@ -28,22 +27,21 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         # d.ports = container["ports"]
 
         # Specify a friendly name for the Docker container, pull from YAML file
-        d.name = container["name"]
+        d.name = "server-ansible"
     
         # Set host name
-        d.create_args = ["-h", container["name"]]
+        d.create_args = ["-h", "server-ansible"]
     
         d.privileged = true
         d.remains_running = true
     
         # Specify the Docker image to use, pull value from YAML file
-        d.build_dir = container["build_dir"]
+        d.build_dir = ../../docker
         d.dockerfile = "Dockerfile"
     
         d.has_ssh = true   
         d.volumes = ["/sys/fs/cgroup:/sys/fs/cgroup:ro"]
       end
-    end
   end
 end
     

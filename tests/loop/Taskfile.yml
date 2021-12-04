@@ -1,0 +1,34 @@
+# A set of tasks to allow ops to be
+version: "3"
+
+tasks:
+  ssh:
+    desc: ssh to vagrant
+    cmds:
+      - task: run
+      - vagrant ssh
+  run:
+    desc: Run vagrant
+    cmds:
+      - cmd: vagrant up --provider=docker
+        ignore_error: true
+  up:
+    desc: Start vagrant
+    cmds:
+      - vagrant up --provider=docker
+#  suspend:
+#    desc: Suspend vagrant
+#    cmds:
+#      - vagrant suspend
+#  resume:
+#    desc: Resume vagrant
+#    cmds:
+#      - vagrant resume
+  halt:
+    desc: Halt vagrant
+    cmds:
+      - vagrant halt
+  destroy:
+    desc: Halt vagrant machine
+    cmds:
+      - vagrant destroy

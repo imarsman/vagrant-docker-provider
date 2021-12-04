@@ -1,9 +1,9 @@
 ---
 - name: host1
-  build_dir: .
+  build_dir: ../../docker
   # Same port will end up clashing
   ports: ["2200:22"]
 - name: host2
-  build_dir: .
+  build_dir: ../../docker
   # Same port will end up clashing
   ports: ["2222:22"]
