@@ -42,6 +42,10 @@ RUN useradd -m -G sudo -s /bin/bash vagrant && \
 # Establish ssh keys for vagrant
 RUN mkdir -p /home/vagrant/.ssh; \
     chmod 700 /home/vagrant/.ssh
+
+# The corresponding private key is at
+# https://github.com/hashicorp/vagrant/blob/master/keys/vagrant
+# Never use this outside of a vagrant test environment
 ADD https://raw.githubusercontent.com/hashicorp/vagrant/master/keys/vagrant.pub /home/vagrant/.ssh/authorized_keys
 RUN chmod 600 /home/vagrant/.ssh/authorized_keys; \
     chown -R vagrant:vagrant /home/vagrant/.ssh
