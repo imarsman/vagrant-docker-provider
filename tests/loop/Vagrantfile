@@ -38,7 +38,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     
         # Specify the Docker image to use, pull value from YAML file
         d.build_dir = container["build_dir"]
-        d.dockerfile = "Dockerfile"
+        d.dockerfile = container["dockerfile"]
     
         d.has_ssh = true
 
