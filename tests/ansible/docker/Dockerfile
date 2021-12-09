@@ -14,6 +14,7 @@ RUN apt-get update && \
     man-db \
     curl \
     wget \
+    python3 \
     vim-tiny && \
     apt-get -qq clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
