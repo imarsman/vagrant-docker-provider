@@ -103,7 +103,7 @@ Makefile. For the purposes of these tests a Taskfile is sufficient and for me
 more pleasant to read and write. Here are the task commands for the Ansible test
 
 ```
-% task
+% task -l
 task: Available tasks for this project:
 * destroy: 	    Destroy vagrant machine
 * halt: 	    Halt vagrant
