@@ -5,6 +5,9 @@ for the code for this project that I was able to use to do my own
 experimentation. I very much appreciate the open source ethos which I think
 moves humanity forward in knowledge and collaboration.
 
+This repo will build a docker image that can be used as a provider for
+[Vagrant](https://www.vagrantup.com) as a Linux development environment.
+
 As mentioned above, this project was forked from another which included a
 multi-architecture build and storage of the built container in a remote
 repository. At the moment I am just wishing to be able to have an amd64 base
@@ -24,9 +27,6 @@ longer for Intel than for native ARM64. You can change the Dockerfile platform
 parameter to get an arm container.
 
 `FROM --platform=linux/arm64 debian:bullseye`
-
-This repo will build a docker image that can be used as a provider for
-[Vagrant](https://www.vagrantup.com) as a Linux development environment.
 
 ## Vagrant with Ansible
 
