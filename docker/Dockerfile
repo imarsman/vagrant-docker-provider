@@ -1,6 +1,6 @@
 # Build with:
 # docker buildx build --platform linux/amd64,linux/arm64 --push --tag rofrano/vagrant-provider:debian .
-FROM debian:bullseye
+FROM --platform=linux/amd64 debian:bullseye
 LABEL MAINTAINER="Ian Marsman <ian.marsman@gmail.com>"
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -14,6 +14,7 @@ RUN apt-get update && \
     man-db \
     curl \
     wget \
+    python3 \
     vim-tiny && \
     apt-get -qq clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

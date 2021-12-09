@@ -11,7 +11,7 @@ require 'yaml'
 # Read details of containers to be created from YAML file
 # Be sure to edit 'containers.yml' to provide container details
 
-containers = YAML.load_file('containers.yml')
+# containers = YAML.load_file('containers.yml')
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.hostname = "vagrant-docker"
@@ -35,12 +35,23 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         d.remains_running = true
     
         # Specify the Docker image to use, pull value from YAML file
-        d.build_dir = ../../docker
+        d.build_dir = "../../docker"
         d.dockerfile = "Dockerfile"
     
         d.has_ssh = true   
         d.volumes = ["/sys/fs/cgroup:/sys/fs/cgroup:ro"]
       end
+  end
+
+  # Use :ansible or :ansible_local to
+  # select the provisioner of your choice
+  config.vm.provision :ansible do |ansible|
+    # ansible 127.0.0.1 -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory -m ping
+    # ansible-playbook -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory playbook.yml
+    # add -vvv arg
+    # ssh vagrant@127.0.0.1 -p 2201 -i .vagrant/machines/server/docker/private_key
+    # ansible.extra_vars = { ansible_python_interpreter:"/opt/homebrew/bin/python3" }
+    ansible.playbook = "playbook.yml"
   end
 end
     
