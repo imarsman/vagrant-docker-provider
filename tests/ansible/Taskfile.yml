@@ -29,6 +29,6 @@ tasks:
     cmds:
       - vagrant halt
   destroy:
-    desc: Halt vagrant machine
+    desc: Destroy vagrant machine
     cmds:
       - vagrant destroy

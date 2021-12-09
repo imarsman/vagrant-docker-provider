@@ -102,16 +102,16 @@ I have included a [Taskfile](https://taskfile.dev/#/) for each test instead of a
 Makefile. For the purposes of these tests a Taskfile is sufficient and for me
 more pleasant to read and write. Here are the task commands for the Ansible test
 
-```shell_session
-% task                                                                                                       <master ✗>
+```
+% task
 task: Available tasks for this project:
-* destroy: 	    Halt vagrant machine
-* halt: 	      Halt vagrant
-* run: 		      Run vagrant
-* ssh: 		      ssh to vagrant
+* destroy: 	    Destroy vagrant machine
+* halt: 	    Halt vagrant
+* run: 		    Run vagrant
+* ssh: 		    ssh to vagrant
 * ssh-config:   Get ssh config
 * status:       Vagrant status
-* up: 		      Start vagrant
+* up: 		    Start vagrant
 ```
 
 ## Command Line Usage
