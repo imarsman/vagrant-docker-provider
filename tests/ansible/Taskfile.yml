@@ -7,6 +7,10 @@ tasks:
     cmds:
       - task: run
       - vagrant ssh
+  ssh-config:
+    desc: Get ssh config
+    cmds:
+      - vagrant ssh-config
   run:
     desc: Run vagrant
     cmds:
