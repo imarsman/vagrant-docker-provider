@@ -1,6 +1,6 @@
 ---
 - name: host1
-  build_dir: ../../docker
+  build_dir: ../../docker/base
   dockerfile: Dockerfile
   # Same port will end up clashing
   ports: ["2200:22"]
