@@ -2,10 +2,10 @@
 - name: host1
   build_dir: ../../docker/base
   dockerfile: Dockerfile
-  # Same port will end up clashing
+  # Same port will end up clashing. Vagrant will adjust.
   ports: ["2200:22"]
 - name: host2
   build_dir: ../../docker/base
   dockerfile: Dockerfile
-  # Same port will end up clashing
+  # Same port will end up clashing. Vagrant will adjust.
   ports: ["2222:22"]
