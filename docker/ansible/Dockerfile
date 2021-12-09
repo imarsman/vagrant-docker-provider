@@ -14,6 +14,7 @@ RUN apt-get update && \
     man-db \
     curl \
     wget \
+    # Used for Ansible
     python3 \
     vim-tiny && \
     apt-get -qq clean && \
