@@ -114,7 +114,7 @@ task: Available tasks for this project:
 
 ## Command Line Usage
 
-To use this provider, add the `--provider` flag to your `vagrant` command:
+To use the docker provider, add the `--provider` flag to your `vagrant` command:
 
 ```sh
 vagrant up --provider=docker
