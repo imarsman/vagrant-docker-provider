@@ -4,3 +4,4 @@ Thumbs.db
 
 # Vagrant metadata folder
 .vagrant/
+tests/ansible/hacking/env-setup
