@@ -1,11 +1,12 @@
-FROM --platform=linux/amd64 ubuntu:focal
-LABEL MAINTAINER="John Rofrano <rofrano@gmail.com>"
+# Build with:
+# docker buildx build --platform linux/amd64,linux/arm64 --push --tag rofrano/vagrant-provider:debian .
+FROM --platform=linux/arm64 debian:bullseye
+LABEL MAINTAINER="Ian Marsman <ian.marsman@gmail.com>"
 
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install packages needed for SSH and interactive OS
 RUN apt-get update && \
-    yes | unminimize && \
     apt-get -y install \
     openssh-server \
     passwd \
@@ -25,7 +26,8 @@ RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == system
     rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
     rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
     rm -f /lib/systemd/system/basic.target.wants/*; \
-    rm -f /lib/systemd/system/anaconda.target.wants/*;
+    rm -f /lib/systemd/system/anaconda.target.wants/*; \
+    ln -s /lib/systemd/systemd /usr/sbin/init;
 
 # Enable ssh for vagrant
 RUN systemctl enable ssh.service; 
@@ -40,6 +42,10 @@ RUN useradd -m -G sudo -s /bin/bash vagrant && \
 # Establish ssh keys for vagrant
 RUN mkdir -p /home/vagrant/.ssh; \
     chmod 700 /home/vagrant/.ssh
+
+# The corresponding private key is at
+# https://github.com/hashicorp/vagrant/blob/master/keys/vagrant
+# Never use this outside of a vagrant test environment
 ADD https://raw.githubusercontent.com/hashicorp/vagrant/master/keys/vagrant.pub /home/vagrant/.ssh/authorized_keys
 RUN chmod 600 /home/vagrant/.ssh/authorized_keys; \
     chown -R vagrant:vagrant /home/vagrant/.ssh

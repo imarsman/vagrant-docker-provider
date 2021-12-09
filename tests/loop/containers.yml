@@ -4,6 +4,6 @@
   # Same port will end up clashing
   ports: ["2200:22"]
 - name: host2
-  build_dir: ../../docker
+  build_dir: ../../docker/base
   # Same port will end up clashing
   ports: ["2222:22"]

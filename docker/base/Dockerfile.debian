@@ -1,6 +1,6 @@
 # Build with:
 # docker buildx build --platform linux/amd64,linux/arm64 --push --tag rofrano/vagrant-provider:debian .
-FROM --platform=linux/amd64 debian:bullseye
+FROM --platform=linux/arm64 debian:bullseye
 LABEL MAINTAINER="Ian Marsman <ian.marsman@gmail.com>"
 
 ENV DEBIAN_FRONTEND noninteractive

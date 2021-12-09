@@ -1,10 +1,16 @@
 # vagrant-docker-provider
 
-This project was forked from another which included a multi-architecture build
-and storage of the built container in a remote repository. At the moment I am
-just wishing to be able to have an amd64 base Docker container that can be used
-to run Vagrant on a Mac M1. There is a fair bit of the forked project's logic,
-which I will adjust to fit my use case up over time.
+I'd like to thank [rofrano](https://github.com/rofrano/vagrant-docker-provider)
+for the code for this project that I was able to use to do my own
+experimentation. I very much appreciate the open source ethos which I think
+moves humanity forward in knowledge and collaboration.
+
+As mentioned above, this project was forked from another which included a
+multi-architecture build and storage of the built container in a remote
+repository. At the moment I am just wishing to be able to have an amd64 base
+Docker container that can be used to run Vagrant on a Mac M1. There is a fair
+bit of the forked project's logic, which I will adjust to fit my use case up
+over time.
 
 One of my use cases is being able to use Vagrant to run an Intel Docker container
 under Vagrant. I have determined that this can be done. I accomplished this by
