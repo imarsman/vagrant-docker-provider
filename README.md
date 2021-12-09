@@ -6,8 +6,31 @@ just wishing to be able to have an amd64 base Docker container that can be used
 to run Vagrant on a Mac M1. There is a fair bit of the forked project's logic,
 which I will adjust to fit my use case up over time.
 
+One of my use cases is being able to use Vagrant to run an Intel Docker container
+under Vagrant. I have determined that this can be done. I accomplished this by
+adding the architecture as a parameter in the Dockerfile.
+
+`FROM --platform=linux/amd64 debian:bullseye`
+
+From Vagrant's point of view an image is created. It does not interfere with
+Vagrant to be hosting an Intel container on an M1 computer. The build does take
+longer for Intel than for native ARM64. You can change the Dockerfile platform
+parameter to get an arm container.
+
+`FROM --platform=linux/arm64 debian:bullseye`
+
 This repo will build a docker image that can be used as a provider for
 [Vagrant](https://www.vagrantup.com) as a Linux development environment.
+
+## Vagrant with Ansible
+
+I have not used Ansible much but wanted to learn how to use it locally to see
+how it could be used to provision a server. There is a test in this project that
+does a simple Ansible package install. I could likely also install python using
+the raw module but it is easier to have python included with the Docker build
+then use the apt module. Another option would be to run a playbook that
+installed python using the raw module then another playbook that used the
+installed python with the apt module to do the rest of the packages.
 
 ## Why Vagrant with Docker?
 
@@ -67,6 +90,22 @@ Here is a sample `Vagrantfile` that uses this image:
   end
 ```
 
+## Task files to run routine opterations
+
+I have included a [Taskfile](https://taskfile.dev/#/) for each test instead of a
+Makefile. For the purposes of these tests a Taskfile is sufficient and for me
+more pleasant to read and write. Here are the task commands for the Ansible test
+
+```shell_session
+% task
+task: Available tasks for this project:
+* destroy: 	Halt vagrant machine
+* halt: 	Halt vagrant
+* run: 		Run vagrant
+* ssh: 		ssh to vagrant
+* up: 		Start vagrant
+```
+
 ## Command Line Usage
 
 To use this provider, add the `--provider` flag to your `vagrant` command:
@@ -78,10 +117,10 @@ vagrant up --provider=docker
 This will use this the docker image specified in your `Vagrantfile` as the base
 box.
 
-You can also run this using the provided `Makefile` with:
-
-task 
-
 ## Credits
 
-A huge thanks to [Matthew Warman](http://warman.io) who provided the `Dockerfile` from [mcwarman/vagrant-provider](https://github.com/mcwarman/vagrant-docker-provider) as the bases for my `Dockerfile` using `systemd`. He added all the magic to make it work and I am very greateful for his generosity.
+A huge thanks to [Matthew Warman](http://warman.io) who provided the
+`Dockerfile` from
+[mcwarman/vagrant-provider](https://github.com/mcwarman/vagrant-docker-provider)
+as the bases for my `Dockerfile` using `systemd`. He added all the magic to make
+it work and I am very greateful for his generosity.
