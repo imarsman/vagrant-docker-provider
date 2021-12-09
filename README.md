@@ -103,13 +103,14 @@ Makefile. For the purposes of these tests a Taskfile is sufficient and for me
 more pleasant to read and write. Here are the task commands for the Ansible test
 
 ```shell_session
-% task
+% task                                                                                                       <master ✗>
 task: Available tasks for this project:
-* destroy: 	Halt vagrant machine
-* halt: 	Halt vagrant
-* run: 		Run vagrant
-* ssh: 		ssh to vagrant
-* up: 		Start vagrant
+* destroy: 	    Halt vagrant machine
+* halt: 	      Halt vagrant
+* run: 		      Run vagrant
+* ssh: 		      ssh to vagrant
+* ssh-config: 	Get ssh config
+* up: 		      Start vagrant
 ```
 
 ## Command Line Usage
