@@ -11,6 +11,10 @@ tasks:
     desc: Get ssh config
     cmds:
       - vagrant ssh-config
+  status:
+    desc: Vagrant status
+    cmds:
+      - cmd: vagrant status
   run:
     desc: Run vagrant
     cmds:

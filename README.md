@@ -109,7 +109,8 @@ task: Available tasks for this project:
 * halt: 	      Halt vagrant
 * run: 		      Run vagrant
 * ssh: 		      ssh to vagrant
-* ssh-config: 	Get ssh config
+* ssh-config:   Get ssh config
+* status:       Vagrant status
 * up: 		      Start vagrant
 ```
 
